@@ -30,12 +30,25 @@ namespace Lab_19_ArrayHelper
             Predicate<int>FinderItemFirst = Colectie.Finder;
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("Elementul este gasit in sir: " + (FinderItemFirst.Invoke(25) ? "DA" : "NU"));
+
             Func<int, string, dynamic> FinderItemSecond = Colectie.Finder;
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("Indexul elementului gasit in sir: " + FinderItemSecond.Invoke(25, "index"));
+
             Func<int, string, dynamic> FinderItemThird = Colectie.Finder;
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("Elementul propriu zis gasit in sir: " + FinderItemThird.Invoke(25, "element"));
+
+            Predicate<int> Checker = Colectie.deleteOnCondition;
+
+            int j = 0;
+            Colectie.Collection.Sort();
+            for ( var y = Colectie.Collection.Count - 1; y >= 0 ; y-- )
+            {
+                if (Checker.Invoke(Colectie.Collection[y])) Colectie.Collection.RemoveAt(y);
+            }
+            foreach ( var item in Colectie.Collection )
+            Console.Write(item + " - ");
         }
     }
 }

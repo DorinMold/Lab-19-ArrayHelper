@@ -10,7 +10,7 @@ namespace Lab_19_ArrayHelper
 
         public T FoundItem;
         public bool ValidOrNot;
-        private List<T> Collection;
+        public List<T> Collection;
         int i = 0;
 
         public ArrayHelper(params T[] args)
@@ -58,11 +58,19 @@ namespace Lab_19_ArrayHelper
                 {
                     return element;
                 } else if ( decider == "index" )
-                    return (short)this.Collection.IndexOf(element);
+                    return this.Collection.IndexOf(element);
             }
 
             return -1;
         }
 
+        public bool deleteOnCondition(int i)
+        {
+            if ( i < 30 )
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
